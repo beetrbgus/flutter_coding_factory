@@ -26,8 +26,10 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: WebViewWidget(
-        controller: webViewController,
+      body: Container(
+        child: WebViewWidget(
+          controller: webViewController,
+        ),
       ),
     );
   }
