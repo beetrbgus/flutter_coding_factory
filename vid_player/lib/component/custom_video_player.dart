@@ -29,7 +29,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   // dispose 안하면 앱 실행 될 때마다 찌꺼기가 남아있음.
   @override
   void dispose() {
-    videoPlayerController?.dispose();
+    videoPlayerController?.removeListener(videoContollerListener);
     super.dispose();
   }
 
@@ -40,9 +40,46 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
     );
     await videoController.initialize();
 
+    videoController.addListener(videoContollerListener);
     setState(() {
       this.videoPlayerController = videoController;
     });
+  }
+
+  void videoContollerListener() {
+    setState(() {});
+  }
+
+  void onReversePressed() {
+    final currentPosition = videoPlayerController!.value.position;
+    Duration position = Duration(); // 0초로 실행위치 초기화
+
+    if (currentPosition.inSeconds > 3) {
+      position = currentPosition - Duration(seconds: 3);
+    }
+
+    videoPlayerController!.seekTo(position);
+  }
+
+  void onForwardPressed() {
+    final Duration maxPosition = videoPlayerController!.value.duration;
+    final Duration currentPosition = videoPlayerController!.value.position;
+
+    Duration position = maxPosition;
+
+    if ((maxPosition - Duration(seconds: 3)).inSeconds >
+        currentPosition.inSeconds) {
+      position = currentPosition + Duration(seconds: 3);
+    }
+    videoPlayerController!.seekTo(position);
+  }
+
+  void onPlayPressed() {
+    if (videoPlayerController!.value.isPlaying) {
+      videoPlayerController!.pause();
+    } else {
+      videoPlayerController!.play();
+    }
   }
 
   @override
@@ -86,17 +123,17 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CustomIconButton(
-                    onPressed: () {},
+                    onPressed: onReversePressed,
                     iconData: Icons.rotate_left,
                   ),
                   CustomIconButton(
-                    onPressed: () {},
+                    onPressed: onPlayPressed,
                     iconData: videoPlayerController!.value.isPlaying
                         ? Icons.pause
                         : Icons.play_arrow_outlined,
                   ),
                   CustomIconButton(
-                    onPressed: () {},
+                    onPressed: onForwardPressed,
                     iconData: Icons.rotate_right,
                   ),
                 ],
