@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vid_player/component/custom_icon_button.dart';
 import 'package:video_player/video_player.dart';
 
 // 동영상 위젯 생성
@@ -54,7 +55,54 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
     return AspectRatio(
       aspectRatio: videoPlayerController!.value.aspectRatio,
-      child: VideoPlayer(videoPlayerController!),
+      child: Stack(
+        children: [
+          VideoPlayer(videoPlayerController!),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            left: 0,
+            child: Slider(
+              min: 0,
+              value: videoPlayerController!.value.position.inSeconds.toDouble(),
+              max: videoPlayerController!.value.duration.inSeconds.toDouble(),
+              onChanged: (double val) {
+                videoPlayerController!.seekTo(
+                  Duration(seconds: val.toInt()),
+                );
+              },
+            ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: CustomIconButton(
+              onPressed: () {},
+              iconData: Icons.photo_camera_back,
+            ),
+          ),
+          Align(
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CustomIconButton(
+                    onPressed: () {},
+                    iconData: Icons.rotate_left,
+                  ),
+                  CustomIconButton(
+                    onPressed: () {},
+                    iconData: videoPlayerController!.value.isPlaying
+                        ? Icons.pause
+                        : Icons.play_arrow_outlined,
+                  ),
+                  CustomIconButton(
+                    onPressed: () {},
+                    iconData: Icons.rotate_right,
+                  ),
+                ],
+              )),
+        ],
+      ),
     );
   }
 }

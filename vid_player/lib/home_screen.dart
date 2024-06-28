@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vid_player/component/custom_video_player.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => _HomeScreenState();
 }
@@ -25,8 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: video == null ? renderEmpty() : renderVideo(),
+      body: this.video == null ? renderEmpty() : renderVideo(),
     );
+  }
+
+  @override
+  void dispose() {
+    video = null;
+    super.dispose();
   }
 
   Widget renderEmpty() {
@@ -55,32 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class CustomVideoPlayer extends StatefulWidget {
-  const CustomVideoPlayer({
-    super.key,
-    required this.video,
-  });
-  final XFile video;
-  @override
-  State<StatefulWidget> createState() => _CustomVideoPlayerState();
-}
-
-class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        "CustomVideoPlayer",
-        style: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
-
 class _Logo extends StatelessWidget {
-  const _Logo({super.key, required this.onTap});
+  const _Logo({required this.onTap});
 
   final GestureTapCallback onTap;
   @override
