@@ -113,23 +113,25 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
           children: [
             VideoPlayer(videoPlayerController!),
             if (showControlIcons)
-              Positioned(
-                bottom: 0,
-                right: 0,
-                left: 0,
-                child: Slider(
-                  min: 0,
-                  value: videoPlayerController!.value.position.inSeconds
-                      .toDouble(),
-                  max: videoPlayerController!.value.duration.inSeconds
-                      .toDouble(),
-                  onChanged: (double val) {
-                    videoPlayerController!.seekTo(
-                      Duration(seconds: val.toInt()),
-                    );
-                  },
-                ),
+              Container(
+                color: Colors.black.withOpacity(0.5),
               ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: Slider(
+                min: 0,
+                value:
+                    videoPlayerController!.value.position.inSeconds.toDouble(),
+                max: videoPlayerController!.value.duration.inSeconds.toDouble(),
+                onChanged: (double val) {
+                  videoPlayerController!.seekTo(
+                    Duration(seconds: val.toInt()),
+                  );
+                },
+              ),
+            ),
             Align(
               alignment: Alignment.topRight,
               child: CustomIconButton(
