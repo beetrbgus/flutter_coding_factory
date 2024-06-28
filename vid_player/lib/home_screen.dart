@@ -8,6 +8,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   XFile? video;
+
+  void onNewVideoPressed() async {
+    final video = await ImagePicker().pickVideo(
+      source: ImageSource.gallery,
+    );
+
+    if (video != null) {
+      setState(() {
+        this.video = video;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,28 +33,62 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: getBoxDecoration(),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _Logo(),
-          SizedBox(height: 30),
-          _AppName(),
+          _Logo(
+            onTap: onNewVideoPressed,
+          ),
+          const SizedBox(height: 30),
+          const _AppName(),
         ],
       ),
     );
   }
 
   Widget renderVideo() {
-    return Container();
+    return Center(
+      child: CustomVideoPlayer(
+        video: video!,
+      ),
+    );
+  }
+}
+
+class CustomVideoPlayer extends StatefulWidget {
+  const CustomVideoPlayer({
+    super.key,
+    required this.video,
+  });
+  final XFile video;
+  @override
+  State<StatefulWidget> createState() => _CustomVideoPlayerState();
+}
+
+class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        "CustomVideoPlayer",
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+    );
   }
 }
 
 class _Logo extends StatelessWidget {
-  const _Logo({super.key});
+  const _Logo({super.key, required this.onTap});
 
+  final GestureTapCallback onTap;
   @override
   Widget build(BuildContext context) {
-    return Image.asset('asset/images/logo.png');
+    return GestureDetector(
+      onTap: onTap,
+      child: Image.asset('asset/images/logo.png'),
+    );
   }
 }
 
