@@ -19,6 +19,7 @@ class CustomVideoPlayer extends StatefulWidget {
 
 class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   VideoPlayerController? videoPlayerController;
+  final Duration skipTime = const Duration(seconds: 3);
 
   @override
   void initState() {
@@ -52,10 +53,10 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
   void onReversePressed() {
     final currentPosition = videoPlayerController!.value.position;
-    Duration position = Duration(); // 0초로 실행위치 초기화
+    Duration position = const Duration(); // 0초로 실행위치 초기화
 
     if (currentPosition.inSeconds > 3) {
-      position = currentPosition - Duration(seconds: 3);
+      position = currentPosition - skipTime;
     }
 
     videoPlayerController!.seekTo(position);
@@ -67,9 +68,8 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
     Duration position = maxPosition;
 
-    if ((maxPosition - Duration(seconds: 3)).inSeconds >
-        currentPosition.inSeconds) {
-      position = currentPosition + Duration(seconds: 3);
+    if ((maxPosition - skipTime).inSeconds > currentPosition.inSeconds) {
+      position = currentPosition + skipTime;
     }
     videoPlayerController!.seekTo(position);
   }
