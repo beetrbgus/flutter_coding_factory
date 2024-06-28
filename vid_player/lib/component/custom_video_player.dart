@@ -120,16 +120,38 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
               bottom: 0,
               right: 0,
               left: 0,
-              child: Slider(
-                min: 0,
-                value:
-                    videoPlayerController!.value.position.inSeconds.toDouble(),
-                max: videoPlayerController!.value.duration.inSeconds.toDouble(),
-                onChanged: (double val) {
-                  videoPlayerController!.seekTo(
-                    Duration(seconds: val.toInt()),
-                  );
-                },
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: renderTimeTextFromDuration(
+                      videoPlayerController!.value.position,
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Slider(
+                        min: 0,
+                        value: videoPlayerController!.value.position.inSeconds
+                            .toDouble(),
+                        max: videoPlayerController!.value.duration.inSeconds
+                            .toDouble(),
+                        onChanged: (double val) {
+                          videoPlayerController!.seekTo(
+                            Duration(seconds: val.toInt()),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: renderTimeTextFromDuration(
+                      videoPlayerController!.value.duration,
+                    ),
+                  ),
+                ],
               ),
             ),
             Align(
@@ -165,6 +187,13 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget renderTimeTextFromDuration(Duration duration) {
+    return Text(
+      "${duration.inMinutes.toString().padLeft(2, '0')}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}",
+      style: const TextStyle(color: Colors.white),
     );
   }
 }
