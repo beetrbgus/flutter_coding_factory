@@ -38,12 +38,6 @@
       "languageVersion": "3.3"
     },
     {
-      "name": "csslib",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/csslib-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
-    },
-    {
       "name": "cupertino_icons",
       "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/cupertino_icons-1.0.8",
       "packageUri": "lib/",
@@ -87,7 +81,7 @@
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-3.0.2",
+      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-4.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
@@ -108,12 +102,6 @@
       "rootUri": "file:///C:/Program%20Files/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.2"
-    },
-    {
-      "name": "html",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/html-0.15.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
     },
     {
       "name": "http",
@@ -141,9 +129,9 @@
     },
     {
       "name": "image_picker_for_web",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_for_web-2.2.0",
+      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/image_picker_for_web-3.0.4",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.3"
     },
     {
       "name": "image_picker_ios",
@@ -195,9 +183,9 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/lints-3.0.0",
+      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/lints-4.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.1"
     },
     {
       "name": "matcher",
@@ -290,36 +278,6 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "video_player",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/video_player-2.4.6",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
-      "name": "video_player_android",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/video_player_android-2.4.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
-      "name": "video_player_avfoundation",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/video_player_avfoundation-2.4.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
-      "name": "video_player_platform_interface",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/video_player_platform_interface-5.1.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "video_player_web",
-      "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/video_player_web-2.0.15",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
       "name": "vm_service",
       "rootUri": "file:///C:/Users/devbe/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.2.1",
       "packageUri": "lib/",
@@ -338,7 +296,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-06-28T00:52:10.784379Z",
+  "generated": "2024-06-28T04:27:44.726714Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///C:/Program%20Files/flutter",
