@@ -11,7 +11,7 @@ class Test extends StatefulWidget {
 class _TestState extends State<Test> {
   static const List<String> _dropdownList = ['1', '2', '3', '4'];
   bool isOpened = false;
-  String _dropdownValue = _dropdownList.first;
+  String? _dropdownValue;
 
   // 드롭 박스
   OverlayEntry? _overlayEntry;
@@ -68,20 +68,22 @@ class _TestState extends State<Test> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.grey,
+                    color: isOpened ? Colors.orange : Colors.grey,
                   ),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // 선택값.
+                    // 선택값 또는 힌트 텍스트
                     Text(
-                      _dropdownValue,
-                      style: const TextStyle(
+                      _dropdownValue ?? '지급 방식', // 선택된 값이 없으면 힌트 텍스트를 표시
+                      style: TextStyle(
                         fontSize: 16,
                         height: 22 / 16,
-                        color: Colors.black,
+                        color: _dropdownValue == null
+                            ? Colors.grey
+                            : Colors.black, // 힌트 텍스트 스타일 적용
                       ),
                     ),
 
